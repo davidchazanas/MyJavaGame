@@ -1,12 +1,24 @@
 package com.games.demo.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.games.demo.entities.Game;
-import com.games.demo.entities.Player;
 
-@Repository
-public interface GameRepository extends JpaRepository<Game, Long>{
+@Service
+public class GameRepository implements IGameRepository{
+
+    @Autowired
+    GameRepositoryJPA gameRepositoryJPA;
+
+    @Override
+    public Game findById(Long gid) {
+        return gameRepositoryJPA.findById(gid).orElseThrow();
+    }
+
+    @Override
+    public Game save(Game g) {
+        return gameRepositoryJPA.save(g);
+    }
     
 }

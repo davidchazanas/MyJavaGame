@@ -13,7 +13,7 @@ public class GameServiceTest {
         
     @Test
     public void should_be_able_to_create_new_game(){
-        Game newGame = gameService.newGame();
+        Game newGame = gameService.newGame();   
         assertNotNull(newGame);
     }
    

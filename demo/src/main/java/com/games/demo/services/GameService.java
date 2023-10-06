@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.games.demo.entities.Game;
-import com.games.demo.repositories.GameRepository;
 import com.games.demo.repositories.IGameRepository;
 
 @Service
