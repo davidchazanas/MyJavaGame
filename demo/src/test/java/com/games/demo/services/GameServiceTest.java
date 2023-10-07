@@ -21,16 +21,28 @@ public class GameServiceTest {
         Game newGame = gameService.newGame();
         gameService.winGame(newGame); 
     }
-    
+
     public void should_lose_the_game(){
         Game newGame = gameService.newGame();
         gameService.winGame(newGame); 
     }
 
-    
-    //win game wins the game
-    //lose game loses the game
+    //each user can win his and only his game
+    //each user can lose his and only his game
+
     //restart the game starts a new game
+
+
+
+
+    //each user starts with some gold
+    //user_should_be_able_to_invest_his_gold
+    //invested_cash_should_grow
+    //user_should_be_able_to_withdraw_his_cash
+    //user_should_be_able_to_buy_stuff
+
+
+
     
     
 }
