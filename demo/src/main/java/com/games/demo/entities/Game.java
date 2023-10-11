@@ -1,5 +1,7 @@
 package com.games.demo.entities;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,11 +15,18 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-
     private Long gold;
 
     private Long investedGold;
+
+    private Date lastUpdate;
     
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
     public Long getGold() {
         return gold;
     }
@@ -43,5 +52,9 @@ public class Game {
         Id = id;
     }
     public Game() {
+        gold = 100L;
+        investedGold = 0L;
+        victory = false;
+        lastUpdate = new Date();
     }
 }

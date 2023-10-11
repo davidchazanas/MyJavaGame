@@ -1,5 +1,8 @@
 package com.games.demo.services;
 
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +31,17 @@ public class GameService {
         gameRepository.save(game);
     }
 
+    public Game getGameStatus(long id){
+        Game g = findGameById(id);
+        //recalculate things
+        //long seconds = TimeUnit.MILLISECONDS.toSeconds(g.getLastUpdate().getTime() - new Date().getTime());
+        long seconds = g.getLastUpdate().getTime() - new Date().getTime();
+        
+        g.setGold(g.getGold() + seconds*-1);
+        saveGame(g);
+        return g;
+    }
+
     public Boolean testVictory(Long gid) {
         return testVictory(findGameById(gid));
     }
@@ -49,6 +63,10 @@ public class GameService {
         Game g = new Game();
         gameRepository.save(g);
         return g;
+    }
+
+    public void saveGame(Game g) {
+        gameRepository.save(g);
     }
 
 }

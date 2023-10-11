@@ -1,7 +1,9 @@
 package com.games.demo.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,11 +32,15 @@ public class GameController {
         return g;
     }
 
-/*
-@GetMapping("/{id}")
-public Game getGame(@PathVariable Long id) {
-    GameService gameService = new GameService(repository);
-    return gameService.findById(id).orElseThrow(RuntimeException::new);
-}
-*/
+
+    @GetMapping("/{id}")
+    public Game getGame(@PathVariable Long id) {
+        GameService gameService = new GameService(repository);
+        
+        Game g = gameService.getGameStatus(id);
+        
+        return g;
+
+    }
+
 }
